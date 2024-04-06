@@ -33,6 +33,9 @@ class PeriodicTableApp {
   }
 
   createToggleSwitch() {
+    const container = document.createElement('div');
+    container.className = 'toggle-container';
+  
     const label = document.createElement('label');
     label.className = 'switch';
   
@@ -42,8 +45,15 @@ class PeriodicTableApp {
     const span = document.createElement('span');
     span.className = 'slider round';
   
+    const switchLabel = document.createElement('span');
+    switchLabel.className = 'switch-label';
+    switchLabel.textContent = '♂:♀';
+  
     label.appendChild(input);
     label.appendChild(span);
+  
+    container.appendChild(label);
+    container.appendChild(switchLabel);
   
     // Event listener for changing the display of disease information
     input.addEventListener('change', () => {
@@ -53,7 +63,7 @@ class PeriodicTableApp {
         const organName = disease.querySelector('.organ-name');
         const cellType = disease.querySelector('.cell-type');
         const genderRatioText = disease.querySelector('.gender-ratio-text');
-    
+  
         if (input.checked) {
           // Transition to show gender ratio
           organName.style.display = 'none';
@@ -75,10 +85,10 @@ class PeriodicTableApp {
         }
       });
     });
-
-    return label;
+  
+    return container;
   }
-
+  
   createDiseaseElement(disease, index) {
     const element = document.createElement("div");
     element.className = `disease ${disease.diseaseClass} show-details`; // Initial state
@@ -143,12 +153,19 @@ class PeriodicTableApp {
 
     return container;
   }
-
+  
   selectDisease(index) {
     this.selectedDiseaseIndex = index;
-    // Apply selected class or any other identifier to the selected disease
-    this.render(); // Re-render to update the view
+  
+    // Update only the selected disease container with new content
+    const selectedDiseaseContainer = document.querySelector(".selected-disease-container");
+    if (selectedDiseaseContainer) {
+      // Clear the container and append the updated selected disease element
+      selectedDiseaseContainer.innerHTML = "";
+      selectedDiseaseContainer.appendChild(this.createSelectedDiseaseElement());
+    }
   }
+  
 
   createSelectedDiseaseElement() {
     const disease =
