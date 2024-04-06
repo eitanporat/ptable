@@ -32,9 +32,7 @@ overflow-x: auto;
 }
 
 .settings-container {
-display: flex;
-justify-content: center;
-width: 100%; /* Ensure it takes up the full width */
+width: 100vw; /* Ensure it takes up the full width */
 }
 
 #app {
@@ -110,7 +108,6 @@ width: 100%; /* Ensure it takes up the full width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a nice shadow */
     padding: 10px;
     grid-template-columns: repeat(auto-fill, 1fr);
-    grid-auto-rows: minmax(100px, auto);
     gap: 10px;
     align-items: center;
     justify-items: center;
@@ -303,7 +300,7 @@ input:checked + .slider:before {
 /* Responsive adjustments */
 /* Adjustments for smaller screens */
 /* Responsive adjustments */
-@media (max-width: 960px) {
+@media (max-width: 900px) {
     .outer-layout-container {
       flex-direction: column;
     }
@@ -315,35 +312,42 @@ input:checked + .slider:before {
     .content-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
-  
+
     .disease-class-container {
-      flex-direction: row; /* Keep it horizontal */
-      flex-wrap: wrap; /* Allow wrapping into multiple rows */
-      align-items: center;
-      overflow-x: auto; /* Allow horizontal scrolling */
-      width: 100%; /* Set width to 100% of the screen */
-      max-width: 100vw; /* Ensure it doesn't exceed the viewport width */
-      box-sizing: border-box; /* Include padding and border in the element's total width */
-      gap: 20px; /* Maintain gap between items */
+        flex-direction: row; /* Keep it horizontal */
+        flex-wrap: wrap; /* Allow wrapping into multiple rows */
+        justify-content: flex-start; /* Align items to the left */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        width: 100%; /* Set width to 100% of the screen */
+        max-width: 100vw; /* Ensure it doesn't exceed the viewport width */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        gap: 20px; /* Maintain gap between items */
+        margin-left: 10px;
     }
-  
-    .diseases-container {
-      grid-template-columns: 1fr; /* Adjust grid to a single column */
-    }
+
   
     .selected-disease-container {
       order: -1; /* Move the selected disease container above the table */
-      width: 100%; /* Set width to 100% of the screen */
+      width: 100vw; /* Set width to 100% of the screen */
       display: flex;
       justify-content: center; /* Center the selected disease panel horizontally */
+    }
+
+    .settings-container {
+        width: 100vw; /* Ensure it takes up the full width */
     }
   
     .selected-disease {
       width: 150px; /* Adjust width as needed */
       height: 150px; /* Adjust height as needed */
       margin: 0 auto; /* Center the selected disease panel horizontally */
+    }
+
+    .disease {
+        width: 80px; /* Adjust width as needed */
+        height: 80px; /* Adjust height as needed */
+        font-size: smaller;
     }
 }
   
