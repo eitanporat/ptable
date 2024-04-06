@@ -319,5 +319,3 @@ document.addEventListener('gesturestart', function (e) {
 document.addEventListener('touchmove', function (e) {
   e.preventDefault();
 });
-
-document.body.style.overflow = 'hidden';
