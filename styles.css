@@ -13,7 +13,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     background-color: #f4f4f4;
-    padding: 10px;
     font-size: small;
 }
 
@@ -24,8 +23,6 @@ body {
 
 .layout-container {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
 }
 
 .settings-container {
@@ -113,8 +110,6 @@ body {
     border: 1px solid #ccc; /* Add a border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a nice shadow */
     padding: 10px;
-    grid-template-columns: repeat(auto-fill, 1fr);
-    width: fit-content;
     gap: 3px;
     margin: 0 auto;
     max-width: 99vw;
@@ -296,7 +291,6 @@ input:checked + .slider:before {
 }
 
 .selected-disease-container {
-    flex-basis: 200px; /* Set a fixed width for the selected disease panel */
     order: -1;
     margin: 100px;
 }
@@ -338,11 +332,7 @@ input:checked + .slider:before {
       flex-basis: fit-content;
       justify-content: center; /* Center the selected disease panel horizontally */
     }
-
-    .settings-container {
-        width: 100vw; /* Ensure it takes up the full width */
-    }
-  
+    
     .selected-disease {
       font-size: medium;
       width: 120px; /* Adjust width as needed */
