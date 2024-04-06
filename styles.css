@@ -29,8 +29,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    margin: 20px auto;
   }
 
 .layout-container {
@@ -55,20 +53,26 @@ body {
     gap: 20px;
 }
 
-/* Style for the disease class container to lay out items in a row */
 .disease-class-container {
-    display: flex; /* Use flexbox for a horizontal layout */
-    justify-content: center; /* Center items horizontally */
-    /* align-items: center; Center items vertically */
-    gap: 20px; /* Space between items */
-    padding: 10px 0; /* Padding on top and bottom */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 10px;
+}
+
+.disease-class {
+    flex: 1 0 auto; /* Flex-grow: 1, Flex-shrink: 0, Flex-basis: auto */
+    max-width: calc(50vw); /* Maximum width of 33.33% minus the gap */
 }
 
 /* Style for individual disease class items */
 .disease-class {
+    margin: 10px;
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Align the text and the box vertically */
     gap: 5px; /* Space between the color box and the label */
+    width: fit-content;
 }
 
 /* Style for the color box that precedes the label */
@@ -127,6 +131,7 @@ body {
     align-items: center;
     justify-items: center;
     overflow-y: auto; /* Enable vertical scrolling for the diseases container */
+    overflow-x: auto; /* Enable vertical scrolling for the diseases container */
 }
 
 .disease {
@@ -267,7 +272,6 @@ input:checked + .slider:before {
 .selected-disease {
     font-size: large;
     padding: 10px;
-    margin-bottom: 20px;
     border-radius: 10px;
     background-color: #e6f4f1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -306,6 +310,7 @@ input:checked + .slider:before {
 }
 
 .selected-disease-panel {
+    margin: 20px;
     height: auto; /* Auto height for smaller screens */
     order: -1; /* Make the selected disease panel appear first */
     align-self: flex-start; /* Align the selected disease panel to the start (left) */
@@ -319,6 +324,9 @@ input:checked + .slider:before {
       flex-direction: column;
     }
   
+    .diseases-container {
+        max-height: calc(100vh - 300px); /* Set a maximum height of 50% of the viewport height or 300px, whichever is larger */
+    }
     .disease {
         font-size: x-small;
         width: 80px; /* Adjust width as needed */
@@ -333,19 +341,6 @@ input:checked + .slider:before {
       display: flex;
       flex-direction: column;
     }
-
-    .disease-class-container {
-        flex-direction: row; /* Keep it horizontal */
-        flex-wrap: wrap; /* Allow wrapping into multiple rows */
-        justify-content: flex-start; /* Align items to the left */
-        overflow-x: auto; /* Allow horizontal scrolling */
-        width: 100%; /* Set width to 100% of the screen */
-        max-width: 100vw; /* Ensure it doesn't exceed the viewport width */
-        box-sizing: border-box; /* Include padding and border in the element's total width */
-        gap: 20px; /* Maintain gap between items */
-        margin-left: 10px;
-    }
-  
   
     .selected-disease-container {
       order: -1; /* Move the selected disease container above the table */
@@ -364,6 +359,10 @@ input:checked + .slider:before {
       width: 120px; /* Adjust width as needed */
       height: 120px; /* Adjust height as needed */
       margin: 0 auto; /* Center the selected disease panel horizontally */
+    }
+
+    .selected-disease-panel {
+        margin: 0 auto;
     }
 
     .selected-disease-container {
