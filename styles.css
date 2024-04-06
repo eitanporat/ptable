@@ -293,37 +293,64 @@ input:checked + .slider:before {
 }
 
 /* Responsive adjustments */
+/* Adjustments for smaller screens */
 @media (max-width: 960px) {
-    body {
-        font-size: small; /* Decrease font size for smaller screens */
+    * {
+        text-size-adjust: auto;
     }
-
-    #app {
-        flex-direction: column; /* Switch to a single column layout */
+    .outer-layout-container {
+      flex-direction: column;
     }
-
+  
     .layout-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center; /* Center the children horizontally */
-        align-items: center; /* Center the children vertically */
-        gap: 20px;
-        margin: 20px auto; /* Center the layout container horizontally */
-        overflow-x: auto;
+      flex-direction: column;
+    }
+  
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .disease {
-        height: 80px;
-        width: 80px;
-        font-size: 0.6rem; /* Decrease font size for smaller screens */
+        font-size: x-small;
+        width: 76px;
+        height: 76px;
+        padding: 5px;
     }
+  
+    .disease-class-container {
+        flex-direction: row; /* Keep it horizontal */
+        flex-wrap: wrap; /* Allow wrapping into multiple rows */
+        align-items: center;
+        overflow-x: auto; /* Allow horizontal scrolling */
+        width: 100%; /* Set width to 100% of the screen */
+        max-width: 100vw; /* Ensure it doesn't exceed the viewport width */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        gap: 20px; /* Maintain gap between items */
+      }
 
-    .disease-class-label {
-        font-size: 0.6rem; /* Smaller font size */
+
+
+    .diseases-container {
+        display: grid;
+        border-radius: 10px;
+        background-color: white;
+        border: 1px solid #ccc; /* Add a border */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a nice shadow */
+        padding: 5px;
+        grid-template-columns: repeat(auto-fill, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        gap: 5px;
+        align-items: center;
+        justify-items: center;
+    }    
+  
+    .selected-disease-container {
+      order: -1; /* Move the selected disease container above the table */
     }
 }
-
-
+  
 .diseases-container > div {
     overflow: auto;
     white-space: normal;
