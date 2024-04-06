@@ -241,7 +241,6 @@ class PeriodicTableApp {
     const selectedDiseaseContainer = document.createElement("div");
     selectedDiseaseContainer.className = "selected-disease-container";
     selectedDiseaseContainer.appendChild(this.createSelectedDiseaseElement());
-    selectedDiseaseContainer.classList.add("selected-disease-panel"); // Add the class for specific styling
     return selectedDiseaseContainer;
   }
 
@@ -253,25 +252,25 @@ class PeriodicTableApp {
     const outerLayoutContainer = document.createElement("div");
     outerLayoutContainer.className = "outer-layout-container";
   
+    // Create the main layout container to hold the disease content
+    const layoutContainer = document.createElement("div");
+    layoutContainer.className = "layout-container";
+  
     // Create a container for settings (e.g., toggle switch)
     const settingsContainer = document.createElement("div");
     settingsContainer.className = "settings-container";
+     
+    // Container for disease classes and diseases
+    const contentContainer = document.createElement("div");
+    contentContainer.className = "content-container";
   
     // Append the toggle switch to the settings container
     const toggleSwitch = this.createToggleSwitch();
     settingsContainer.appendChild(toggleSwitch);
   
     // Append the settings container to the outer layout container
-    outerLayoutContainer.appendChild(settingsContainer);
-  
-    // Create the main layout container to hold the disease content
-    const layoutContainer = document.createElement("div");
-    layoutContainer.className = "layout-container";
-  
-    // Container for disease classes and diseases
-    const contentContainer = document.createElement("div");
-    contentContainer.className = "content-container";
-  
+    contentContainer.appendChild(settingsContainer);
+    
     // Append disease class elements
     const diseaseClassContainer = document.createElement("div");
     diseaseClassContainer.className = "disease-class-container";
@@ -295,6 +294,7 @@ class PeriodicTableApp {
     const selectedDiseaseContainer = this.createSelectedDiseaseContainer();
     layoutContainer.appendChild(selectedDiseaseContainer);
   
+   
     // Append the main layout container to the outer layout container
     outerLayoutContainer.appendChild(layoutContainer);
   
