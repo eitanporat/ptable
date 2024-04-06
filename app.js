@@ -24,7 +24,6 @@ class PeriodicTableApp {
 
   async init() {
     await this.fetchDiseases();
-    this.fetchDiseaseClasses();
     this.render();
   }
 
@@ -33,14 +32,57 @@ class PeriodicTableApp {
     this.diseases = await response.json();
   }
 
-  fetchDiseaseClasses() {
-    // No need to fetch since we already have the data
+  createToggleSwitch() {
+    const label = document.createElement('label');
+    label.className = 'switch';
+  
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+  
+    const span = document.createElement('span');
+    span.className = 'slider round';
+  
+    label.appendChild(input);
+    label.appendChild(span);
+  
+    // Event listener for changing the display of disease information
+    input.addEventListener('change', () => {
+      const diseases = document.querySelectorAll('.disease');
+      diseases.forEach((disease) => {
+        const diseaseName = disease.querySelector('.disease-name');
+        const organName = disease.querySelector('.organ-name');
+        const cellType = disease.querySelector('.cell-type');
+        const genderRatioText = disease.querySelector('.gender-ratio-text');
+    
+        if (input.checked) {
+          // Transition to show gender ratio
+          organName.style.display = 'none';
+          cellType.style.display = 'none';
+          diseaseName.style.display = 'block'; // Ensure disease name is always shown
+          genderRatioText.style.display = 'block'; // Remove display none to start transition
+          setTimeout(() => {
+            disease.classList.add('show-ratio');
+          }, 0); // Timeout to ensure display is set before adding class
+        } else {
+          // Transition to show full details
+          disease.classList.remove('show-ratio');
+          // Set timeout to apply display block after transition ends
+          setTimeout(() => {
+            organName.style.display = 'block';
+            cellType.style.display = 'block';
+            genderRatioText.style.display = 'none'; // Hide after transition
+          }, 300); // This should be the same duration as the transition
+        }
+      });
+    });
+
+    return label;
   }
 
   createDiseaseElement(disease, index) {
     const element = document.createElement("div");
-    element.className = `disease ${disease.diseaseClass}`;
-    element.style.backgroundColor = this.diseaseClasses.find(
+    element.className = `disease ${disease.diseaseClass} show-details`; // Initial state
+        element.style.backgroundColor = this.diseaseClasses.find(
       (dc) => dc.disease === disease.diseaseClass
     ).color;
 
@@ -48,6 +90,12 @@ class PeriodicTableApp {
     element.style.gridRow = disease.row;
     element.style.gridColumn = disease.column;
 
+    // Create and append disease name element
+    const diseaseNameElement = document.createElement("div");
+    diseaseNameElement.className = "disease-name";
+    diseaseNameElement.textContent = disease.diseaseName;
+    element.appendChild(diseaseNameElement);
+    
     // Create and append organ name element
     const organNameElement = document.createElement("div");
     organNameElement.className = "organ-name";
@@ -60,13 +108,13 @@ class PeriodicTableApp {
     cellTypeElement.textContent = disease.cellType;
     element.appendChild(cellTypeElement);
 
-    // Create and append disease name element
-    const diseaseNameElement = document.createElement("div");
-    diseaseNameElement.className = "disease-name";
-    diseaseNameElement.textContent = disease.diseaseName;
-    element.appendChild(diseaseNameElement);
-
     element.addEventListener("click", () => this.selectDisease(index));
+
+    const genderRatioText = document.createElement("div");
+    genderRatioText.className = "gender-ratio-text";
+    genderRatioText.textContent = `M/F: ${disease.genderRatio}`;
+    element.appendChild(genderRatioText);
+    
     return element;
   }
 
@@ -83,7 +131,7 @@ class PeriodicTableApp {
     const label = document.createElement("span");
     label.className = "disease-class-label";
     label.textContent = diseaseClass.disease;
-
+  
     // Append the color box and label to the container
     container.appendChild(colorBox);
     container.appendChild(label);
@@ -171,45 +219,61 @@ class PeriodicTableApp {
 
   render() {
     // Clear the container before rendering
-    this.container.innerHTML = '';
-
-    // Create a layout container to hold all elements flexibly
-    const layoutContainer = document.createElement('div');
-    layoutContainer.className = 'layout-container';
-
+    this.container.innerHTML = "";
+  
+    // Create an outer layout container to hold the settings and the main content
+    const outerLayoutContainer = document.createElement("div");
+    outerLayoutContainer.className = "outer-layout-container";
+  
+    // Create a container for settings (e.g., toggle switch)
+    const settingsContainer = document.createElement("div");
+    settingsContainer.className = "settings-container";
+  
+    // Append the toggle switch to the settings container
+    const toggleSwitch = this.createToggleSwitch();
+    settingsContainer.appendChild(toggleSwitch);
+  
+    // Append the settings container to the outer layout container
+    outerLayoutContainer.appendChild(settingsContainer);
+  
+    // Create the main layout container to hold the disease content
+    const layoutContainer = document.createElement("div");
+    layoutContainer.className = "layout-container";
+  
     // Container for disease classes and diseases
-    const contentContainer = document.createElement('div');
-    contentContainer.className = 'content-container';
-
+    const contentContainer = document.createElement("div");
+    contentContainer.className = "content-container";
+  
     // Append disease class elements
-    const diseaseClassContainer = document.createElement('div');
-    diseaseClassContainer.className = 'disease-class-container';
-    this.diseaseClasses.forEach(diseaseClass => {
-        diseaseClassContainer.appendChild(this.createDiseaseClassElement(diseaseClass));
+    const diseaseClassContainer = document.createElement("div");
+    diseaseClassContainer.className = "disease-class-container";
+    this.diseaseClasses.forEach((diseaseClass) => {
+      diseaseClassContainer.appendChild(this.createDiseaseClassElement(diseaseClass));
     });
     contentContainer.appendChild(diseaseClassContainer);
-
+  
     // Append disease elements
-    const diseasesContainer = document.createElement('div');
-    diseasesContainer.className = 'diseases-container';
+    const diseasesContainer = document.createElement("div");
+    diseasesContainer.className = "diseases-container";
     this.diseases.forEach((disease, index) => {
-        diseasesContainer.appendChild(this.createDiseaseElement(disease, index));
+      diseasesContainer.appendChild(this.createDiseaseElement(disease, index));
     });
     contentContainer.appendChild(diseasesContainer);
-
-    // Append content container to the layout container
+  
+    // Append the content container to the layout container
     layoutContainer.appendChild(contentContainer);
-
-    // Create and append the selected disease element, styled as a side panel
-    const selectedDiseaseContainer = document.createElement('div');
-    selectedDiseaseContainer.className = 'selected-disease-container';
-    selectedDiseaseContainer.classList.add('selected-disease-panel'); // Add the class for specific styling
-    selectedDiseaseContainer.appendChild(this.createSelectedDiseaseElement());
-    layoutContainer.insertBefore(selectedDiseaseContainer, contentContainer);
-
-    // Append the layout container to the main container
-    this.container.appendChild(layoutContainer);
+  
+    // Append the selected disease container to the layout container
+    const selectedDiseaseContainer = this.createSelectedDiseaseContainer();
+    layoutContainer.appendChild(selectedDiseaseContainer);
+  
+    // Append the main layout container to the outer layout container
+    outerLayoutContainer.appendChild(layoutContainer);
+  
+    // Append the outer layout container to the main container
+    this.container.appendChild(outerLayoutContainer);
   }
+  
 
 }
 
