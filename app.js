@@ -164,7 +164,7 @@ class PeriodicTableApp {
 
     return container;
   }
-  
+
   selectDisease(index) {
     this.selectedDiseaseIndex = index;
   
@@ -193,6 +193,11 @@ class PeriodicTableApp {
       contentContainer.className = "selected-disease-content";
       element.appendChild(contentContainer);
 
+      const diseaseNameElement = document.createElement("div");
+      diseaseNameElement.className = "disease-name";
+      diseaseNameElement.textContent = disease.diseaseName;
+      contentContainer.appendChild(diseaseNameElement);
+
       // Add organ and cell type information to the content container
       const organNameElement = document.createElement("div");
       organNameElement.className = "organ-name";
@@ -203,11 +208,6 @@ class PeriodicTableApp {
       cellTypeElement.className = "cell-type";
       cellTypeElement.textContent = disease.cellType;
       contentContainer.appendChild(cellTypeElement);
-
-      const diseaseNameElement = document.createElement("div");
-      diseaseNameElement.className = "disease-name";
-      diseaseNameElement.textContent = disease.diseaseName;
-      contentContainer.appendChild(diseaseNameElement);
 
       // Apply the same color as the disease class
       const color = this.diseaseClasses.find(
@@ -309,3 +309,15 @@ class PeriodicTableApp {
 document.addEventListener("DOMContentLoaded", () => {
   new PeriodicTableApp("app");
 });
+
+// Disable zooming
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
+
+// Disable scrolling
+document.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+});
+
+document.body.style.overflow = 'hidden';

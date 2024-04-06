@@ -1,14 +1,24 @@
 /* Reset some default styles */
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
 body {
+    overflow: hidden; /* Disable scrolling on the page */
+}
+
+
+/* Enable scrolling only within the table */
+.layout-container {
+    overflow-x: auto; /* Horizontal scroll if table is wider than viewport */
+    max-width: 100vw; /* Ensure table doesn't exceed viewport width */
+    overflow-y: hidden; /* Disable vertical scroll for the table */
+}
+
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
     color: #333;
     background-color: #f4f4f4;
     padding: 10px;
@@ -24,15 +34,18 @@ body {
   }
 
 .layout-container {
-display: flex;
-flex-direction: row;
-justify-content: center; /* Center the children horizontally */
-align-items: center; /* Center the children vertically */
-overflow-x: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
 }
 
 .settings-container {
-width: 100vw; /* Ensure it takes up the full width */
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center the children vertically */
+    justify-content: center; /* Center the children horizontally */
+    width: 100vw; /* Ensure it takes up the full width */
 }
 
 #app {
@@ -46,7 +59,7 @@ width: 100vw; /* Ensure it takes up the full width */
 .disease-class-container {
     display: flex; /* Use flexbox for a horizontal layout */
     justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
+    /* align-items: center; Center items vertically */
     gap: 20px; /* Space between items */
     padding: 10px 0; /* Padding on top and bottom */
 }
@@ -108,14 +121,16 @@ width: 100vw; /* Ensure it takes up the full width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a nice shadow */
     padding: 10px;
     grid-template-columns: repeat(auto-fill, 1fr);
+    width: fit-content;
     gap: 10px;
+    max-width: 99vw;
     align-items: center;
     justify-items: center;
+    overflow-y: auto; /* Enable vertical scrolling for the diseases container */
 }
 
 .disease {
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding: 5px;
     background-color: #e6f4f1;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -125,6 +140,7 @@ width: 100vw; /* Ensure it takes up the full width */
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    overflow: hidden; /* Disable scrolling */
 }
 
 .disease:hover {
@@ -268,8 +284,6 @@ input:checked + .slider:before {
 
 .selected-disease-container {
     flex-basis: 200px; /* Set a fixed width for the selected disease panel */
-    padding-right: 20px; /* Add some right padding to separate from other content */
-    overflow-y: auto; /* Enable vertical scrolling for the selected disease panel */
 }
 
 .selected-disease-content {
@@ -305,6 +319,12 @@ input:checked + .slider:before {
       flex-direction: column;
     }
   
+    .disease {
+        font-size: x-small;
+        width: 80px; /* Adjust width as needed */
+        height: 80px; /* Adjust height as needed */
+    }
+    
     .layout-container {
       flex-direction: column;
     }
@@ -325,11 +345,12 @@ input:checked + .slider:before {
         gap: 20px; /* Maintain gap between items */
         margin-left: 10px;
     }
-
+  
   
     .selected-disease-container {
       order: -1; /* Move the selected disease container above the table */
       width: 100vw; /* Set width to 100% of the screen */
+      height: 100px; /* Auto height for smaller screens */
       display: flex;
       justify-content: center; /* Center the selected disease panel horizontally */
     }
@@ -339,15 +360,14 @@ input:checked + .slider:before {
     }
   
     .selected-disease {
-      width: 150px; /* Adjust width as needed */
-      height: 150px; /* Adjust height as needed */
+      font-size: medium;
+      width: 120px; /* Adjust width as needed */
+      height: 120px; /* Adjust height as needed */
       margin: 0 auto; /* Center the selected disease panel horizontally */
     }
 
-    .disease {
-        width: 80px; /* Adjust width as needed */
-        height: 80px; /* Adjust height as needed */
-        font-size: smaller;
+    .selected-disease-container {
+        flex-basis: 125px; /* Set a fixed width for the selected disease panel */
     }
 }
   
