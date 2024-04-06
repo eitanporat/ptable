@@ -151,6 +151,17 @@ class PeriodicTableApp {
     );
     container.addEventListener("mouseleave", () => this.resetHighlight());
 
+    // Use touch events for mobile hover effect
+    container.addEventListener("touchstart", (event) => {
+      this.highlightDiseases(diseaseClass.disease);
+      event.preventDefault(); // Prevent default touch behavior
+    });
+
+    container.addEventListener("touchend", (event) => {
+      this.resetHighlight();
+      event.preventDefault(); // Prevent default touch behavior
+    });
+
     return container;
   }
   
