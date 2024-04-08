@@ -2,7 +2,6 @@
 * {
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
 .content-container {
@@ -10,10 +9,11 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* other modern font */
     color: #333;
     background-color: #f4f4f4;
     font-size: small;
+    font-family: 'Open Sans';
 }
 
 .outer-layout-container {
@@ -130,6 +130,45 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.disease .disease-name,
+.disease .organ-name,
+.disease .cell-type {
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    max-height: 80px; /* Adjust to fit content */
+    opacity: 1;
+}
+
+.disease .disease-name {
+    font-weight: bold;
+}
+
+.disease .cell-type,
+.disease .organ-name,
+.disease .disease-name {
+    font-size: smaller;
+}
+
+.disease .gender-ratio-text {
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 1s ease;
+    max-height: 40px; /* Adjust to fit content */
+    font-size: 15px;
+}
+ 
+.disease.show-ratio .gender-ratio-text {
+    max-height: 40px; /* Adjust to fit content */
+    opacity: 1;
+}
+
+.disease.show-ratio .organ-name,
+.disease.show-ratio .cell-type {
+    max-height: 0px;
+    opacity: 0;
 }
 
 .disease:hover {
@@ -145,38 +184,6 @@ body {
 .cell-type {
     color: #555;
     margin: none;
-}
-
-/* Transitions for details and gender ratio text */
-.disease .organ-name,
-.disease .cell-type,
-.disease .disease-name,
-.disease .gender-ratio-text {
-  transition: opacity 0.5s ease, transform 0.5s ease, display 0.5s;
-}
-
-/* Hidden state for gender ratio text by default */
-.disease .gender-ratio-text {
-    display: none; /* Hidden by default */
-    opacity: 0; /* Fully transparent */
-    transform: translateY(10px); /* Positioned slightly above */
-    transition: opacity 0.3s ease, transform 0.3s ease, display 0s 0.3s; /* Transition for smooth effect */
-  }
-
-/* When the disease is showing gender ratio, we adjust the styles */
-.disease.show-ratio .gender-ratio-text {
-    display: block; /* Shown */
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Reset to original position */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transition for smooth effect */
-}
-
-/* When showing the gender ratio, other details are hidden */
-.disease.show-ratio .organ-name,
-.disease.show-ratio .cell-type {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
 }
 
 .switch {
@@ -270,7 +277,9 @@ input:checked + .slider:before {
     color: #333; /* Set the text color to match the disease elements */
 }
 
-
+.selected-disease .disease-name {
+    font-weight: bold;;
+}
 .selected-disease-content {
     height: 100%; /* Set the height of the content container */
     overflow-y: auto; /* Enable vertical scrolling for content */
@@ -293,6 +302,7 @@ input:checked + .slider:before {
 .selected-disease-container {
     order: -1;
     margin: 100px;
+    width: 300px;
 }
 /* Responsive adjustments */
 /* Adjustments for smaller screens */
@@ -300,6 +310,10 @@ input:checked + .slider:before {
 @media (max-width: 900px) {
     .outer-layout-container {
       flex-direction: column;
+    }
+
+    .disease .gender-ratio-text {
+        font-size: small;
     }
   
     .diseases-container {
@@ -330,14 +344,15 @@ input:checked + .slider:before {
       display: flex;
       margin: 0px;
       flex-basis: fit-content;
+      flex-direction: column;
+      align-items: center; /* Center the selected disease panel vertically */;
       justify-content: center; /* Center the selected disease panel horizontally */
     }
-    
+
     .selected-disease {
-      font-size: medium;
+      font-size: small;
       width: 120px; /* Adjust width as needed */
       height: 120px; /* Adjust height as needed */
-      margin: 0 auto; /* Center the selected disease panel horizontally */
     }
 
     .selected-disease-panel {
@@ -351,3 +366,54 @@ input:checked + .slider:before {
     word-wrap: break-word;
     hyphens: auto;
 }
+
+
+.disease-attributes-table {
+    width: 330px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.disease-attributes-table th,
+.disease-attributes-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.disease-attributes-table th:first-child,
+.disease-attributes-table td:first-child {
+  width: 65%; /* First column takes up 60% of the table's width */
+}
+
+.disease-attributes-table th:last-child,
+.disease-attributes-table td:last-child {
+  width: 35%; /* Second column takes up 40% of the table's width */
+}
+
+.disease-attributes-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.disease-attributes-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.disease-attributes-table tr:hover {
+    background-color: #eaeaea;
+}
+
+.disease-attributes-table td {
+    font-size: 16px;
+}
+
+.disease-attributes-table th:first-child,
+.disease-attributes-table td:first-child {
+    border-right: 1px solid #ddd;
+}
+  
