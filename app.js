@@ -206,7 +206,7 @@ class PeriodicTableApp {
         disease.classList.add('hoverable');
       });
     });
-    
+
     return element;
   }
 
@@ -232,18 +232,7 @@ class PeriodicTableApp {
       this.highlightDiseases(diseaseClass.disease)
     );
     container.addEventListener("mouseleave", () => this.resetHighlight());
-
-    // Use touch events for mobile hover effect
-    container.addEventListener("touchstart", (event) => {
-      this.highlightDiseases(diseaseClass.disease);
-      event.preventDefault(); // Prevent default touch behavior
-    });
-
-    container.addEventListener("touchend", (event) => {
-      this.resetHighlight();
-      event.preventDefault(); // Prevent default touch behavior
-    });
-
+  
     return container;
   }
 
@@ -362,16 +351,23 @@ class PeriodicTableApp {
       const diseaseElement = this.container.querySelector(
         `.disease:nth-child(${index + 1})`
       );
-      if (disease.diseaseClass !== diseaseClass) {
+      if (disease.diseaseClass === diseaseClass) {
+        diseaseElement.classList.add("focused");
+      } else {
         diseaseElement.classList.add("dimmed");
       }
     });
   }
-
+  
   resetHighlight() {
     const diseaseElements = this.container.querySelectorAll(".disease");
-    diseaseElements.forEach((element) => element.classList.remove("dimmed"));
+    diseaseElements.forEach((element) => {
+      element.classList.remove("dimmed");
+      element.classList.remove("focused");
+    });
   }
+  
+
   // Function to create the selected disease container
   createSelectedDiseaseContainer() {
     const selectedDiseaseContainer = document.createElement("div");

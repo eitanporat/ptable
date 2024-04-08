@@ -97,9 +97,14 @@ body {
 }
 
 .dimmed {
-    opacity: 0.6; /* Reduce opacity to dim the element */
-    filter: grayscale(100%); /* Turn the element grayscale */
+    opacity: 0.6 !important; /* Reduce opacity to dim the element */
+    filter: grayscale(100%) !important; /* Turn the element grayscale */
     pointer-events: none; /* Disable pointer events on dimmed elements */
+}
+
+.disease.focused {
+    opacity: 1 !important;
+    filter: none !important;
 }
 
 .disease-class:hover .disease-class-color-box {
@@ -229,7 +234,7 @@ color: #333;
     opacity: 0;
 }
 
-.disease:hover {
+.disease-hovered {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
