@@ -187,7 +187,7 @@ color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Specify properties for transition */
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -232,6 +232,11 @@ color: #333;
 .disease:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
+}
+
+.disease.selected {
+    /* Styles for selected disease element */
+    border: 2px solid blue;
 }
 
 .organ-name {

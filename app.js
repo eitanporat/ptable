@@ -125,8 +125,7 @@ class PeriodicTableApp {
 
   createDiseaseElement(disease, index) {
     const element = document.createElement("div");
-    console.log(disease);
-    element.className = `disease ${disease.diseaseClass} show-details`; // Initial state
+    element.className = `disease ${disease.diseaseClass} show-details hoverable`;
     element.style.backgroundColor = diseaseClasses.find(
       (dc) => dc.disease === disease.diseaseClass
     ).color;
@@ -177,6 +176,37 @@ class PeriodicTableApp {
     `;
       element.appendChild(genderRatioText);
     }
+
+    element.addEventListener("mouseenter", () => {
+      if (!this.selectionFinalized) {
+        this.selectDisease(index, false);
+      }
+    });
+  
+    element.addEventListener("click", () => {
+      // Check if the clicked element is already selected
+      if (element.classList.contains("selected")) {
+        // If it is selected, remove the class and unselect it
+        element.classList.remove("selected");
+        this.selectionFinalized = false;
+        this.selectedDiseaseIndex = null;
+        this.updateSelectedDiseaseDisplay(); // Update the display to show no disease selected
+      } else {
+        // If it is not selected, select it and add the class
+        document.querySelectorAll('.disease.selected').forEach(disease => {
+          disease.classList.remove('selected');
+        });
+        element.classList.add("selected");
+        this.selectionFinalized = true;
+        this.selectDisease(index);
+      }
+    
+      // Re-enable the hover effect for all disease elements
+      document.querySelectorAll('.disease').forEach(disease => {
+        disease.classList.add('hoverable');
+      });
+    });
+    
     return element;
   }
 
@@ -217,14 +247,22 @@ class PeriodicTableApp {
     return container;
   }
 
-  selectDisease(index) {
+  selectDisease(index, finalize=true) {
     this.selectedDiseaseIndex = index;
 
+    // Update the selected disease display
     const selectedDiseaseContainer = document.querySelector(".selected-disease-container");
     if (selectedDiseaseContainer) {
       selectedDiseaseContainer.innerHTML = "";
       selectedDiseaseContainer.appendChild(this.createSelectedDiseaseElement());
       selectedDiseaseContainer.appendChild(this.createDiseaseAttributesTable());
+    }
+  
+    // Re-enable the hover effect for all disease elements if not finalizing
+    if (!finalize) {
+      document.querySelectorAll('.disease').forEach(disease => {
+        disease.classList.add('hoverable');
+      });
     }
   }
 
