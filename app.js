@@ -190,7 +190,6 @@ class PeriodicTableApp {
         element.classList.remove("selected");
         this.selectionFinalized = false;
         this.selectedDiseaseIndex = null;
-        this.updateSelectedDiseaseDisplay(); // Update the display to show no disease selected
       } else {
         // If it is not selected, select it and add the class
         document.querySelectorAll('.disease.selected').forEach(disease => {

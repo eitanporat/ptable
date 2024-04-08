@@ -34,6 +34,7 @@ body {
 }
 
 #app {
+    padding-top: 10px;
     /* margin: 0 auto; Center the container horizontally */
     display: flex; /* Use flexbox for layout */
     gap: 20px;
@@ -447,7 +448,7 @@ input:checked + .slider:before {
   
     .diseases-container {
         max-width: 95vw;
-        max-height: calc(100vh - 325px); /* Set a maximum height of 50% of the viewport height or 300px, whichever is larger */
+        max-height: calc(100vh - 280px); /* Set a maximum height of 50% of the viewport height or 300px, whichever is larger */
     }
 
     .disease {
