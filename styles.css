@@ -538,5 +538,9 @@ input:checked + .slider:before {
     .slider-container {
         gap: 5px;
     }
+
+    .disease-attributes-table td {
+        padding: 4px 6px;
+    }
 }
   
