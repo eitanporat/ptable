@@ -359,13 +359,13 @@ class PeriodicTableApp {
     ageSlider.type = 'range';
     ageSlider.id = 'ageSlider';
     ageSlider.min = '0';
-    ageSlider.max = '80';
+    ageSlider.max = '84';
     ageSlider.value = '40';
     ageSlider.step = '1';
   
     const ageValue = document.createElement('span');
     ageValue.id = 'ageValue';
-    ageValue.textContent = '50';
+    ageValue.textContent = ageSlider.value;
   
     sliderContainer.appendChild(ageLabel);
     sliderContainer.appendChild(ageSlider);
@@ -429,7 +429,7 @@ class PeriodicTableApp {
   adjustDiseasesByAge(age) {
     document.querySelectorAll('.disease').forEach((disease) => {
       const onsetAge = parseInt(disease.getAttribute('data-onset-age'));
-      const intensity = Math.min(1, age / onsetAge);
+      const intensity = Math.min(1, Math.pow(age / onsetAge, 3));
       disease.style.opacity = String(intensity);
       disease.style.filter = `brightness(${intensity})`;
       disease.style.transition = 'opacity 1s ease, filter 1s ease';
@@ -439,7 +439,7 @@ class PeriodicTableApp {
   adjustDiseasesByIncidence(incidence) {
     document.querySelectorAll('.disease').forEach((disease) => {
       const diseaseIncidence = parseInt(disease.getAttribute('data-incidence'));
-      const intensity = Math.min(1, diseaseIncidence / incidence); 
+      const intensity = Math.min(1, Math.pow(diseaseIncidence / incidence, 3)); 
       disease.style.opacity = String(intensity);
       disease.style.filter = `brightness(${intensity})`;
       disease.style.transition = 'opacity 1s ease, filter 1s ease';
