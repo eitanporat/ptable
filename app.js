@@ -153,7 +153,7 @@ class PeriodicTableApp {
     {
       const genderRatioText = document.createElement("div");
       genderRatioText.className = "gender-ratio-text";
-      genderRatioText.textContent = `♀:♂: ${disease.genderRatio}`;
+      genderRatioText.innerHTML = `♀:♂</br>${disease.genderRatio}:1`;
       element.appendChild(genderRatioText);
     }
     return element;

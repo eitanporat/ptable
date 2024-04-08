@@ -370,7 +370,6 @@ input:checked + .slider:before {
         width: 250px;
     }
     
-    .disease .gender-ratio-text,
     .disease .cell-type, 
     .disease .organ-name, 
     .disease .disease-name {
@@ -390,7 +389,7 @@ input:checked + .slider:before {
     }
 
     .disease .gender-ratio-text {
-        font-size: xx-small;
+        font-size: 12px;
     }
     .disease-class-label {
         font-size: x-small;
