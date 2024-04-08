@@ -321,7 +321,7 @@ class PeriodicTableApp {
       const attributeToText = {
         "countMale": "Cell Count (Male)",
         "countFemale": "Cell Count (Female)",
-        "cellLifeSpan": "Cell Life Span (Hours)",
+        "cellLifeSpan": "Cell Life Span (Days)",
         "incidence": "Incidence (Per Million)",
         "age": "Age of Onset",
         "genderRatio": "Female/Male Ratio"
