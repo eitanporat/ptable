@@ -184,7 +184,7 @@
     {
         "organ": "Adrenal",
         "cellType": "Zona Fasciculata",
-        "diseaseName": "Cushing's Syndrome Adrenal Adenoma",
+        "diseaseName": "Adrenal Cushing's Syndrome",
         "row": 3,
         "column": 3,
         "diseaseClass": "CD8+ Autoimmune",
@@ -414,7 +414,7 @@
     {
         "organ": "Kidney",
         "cellType": "Podocyte",
-        "diseaseName": "Focal Segmental Glomerulosclerosis",
+        "diseaseName": "FSGS",
         "row": 5,
         "column": 6,
         "diseaseClass": "Progressive Fibrotic",

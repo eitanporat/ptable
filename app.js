@@ -3,7 +3,7 @@ import diseaseClasses from "./constants.js";
 class PeriodicTableApp {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
-    this.diseases = []; // This would be populated with AJAX or Fetch API
+    this.diseases = [];
 
     this.selectedDiseaseIndex = 0;
     // Initialize the app
@@ -39,6 +39,12 @@ class PeriodicTableApp {
     const toggleSwitch = this.createToggleSwitch();
     settingsContainer.appendChild(toggleSwitch);
   
+    const ageSlider = this.createAgeSlider();
+    settingsContainer.appendChild(ageSlider);
+    
+    const incidenceSlider = this.createIncidenceSlider();
+    settingsContainer.appendChild(incidenceSlider);
+    
     // Append the settings container to the outer layout container
     contentContainer.appendChild(settingsContainer);
   
@@ -147,13 +153,28 @@ class PeriodicTableApp {
     diseaseNameElement.textContent = disease.diseaseName;
     element.appendChild(diseaseNameElement);
 
+    element.setAttribute('data-onset-age', disease.age);
+    element.setAttribute('data-incidence', disease.incidence);
+
     element.addEventListener("click", () => this.selectDisease(index));
 
     if (disease.genderRatio)
     {
       const genderRatioText = document.createElement("div");
       genderRatioText.className = "gender-ratio-text";
-      genderRatioText.innerHTML = `♀:♂</br>${disease.genderRatio}:1`;
+      genderRatioText.innerHTML = `<div class="ratio-container">
+      <div class="ratio-part">
+        <div class="ratio-text-left">♀</div>
+        <div class="ratio-colon">:</div>
+        <div class="ratio-text-right">♂</div>
+      </div>
+      <div class="ratio-part">
+        <div class="ratio-text-left">${disease.genderRatio}</div>
+        <div class="ratio-colon">:</div>
+        <div class="ratio-text-right">1</div>
+      </div>
+    </div>    
+    `;
       element.appendChild(genderRatioText);
     }
     return element;
@@ -325,6 +346,105 @@ class PeriodicTableApp {
     return selectedDiseaseContainer;
   }
 
+  createAgeSlider() {
+    const sliderContainer = document.createElement('div');
+    sliderContainer.className = 'slider-container';
+  
+    // Create a label for the slider
+    const ageLabel = document.createElement('span');
+    ageLabel.className = 'age-label';
+    ageLabel.textContent = 'Age:';
+  
+    const ageSlider = document.createElement('input');
+    ageSlider.type = 'range';
+    ageSlider.id = 'ageSlider';
+    ageSlider.min = '0';
+    ageSlider.max = '80';
+    ageSlider.value = '40';
+    ageSlider.step = '1';
+  
+    const ageValue = document.createElement('span');
+    ageValue.id = 'ageValue';
+    ageValue.textContent = '50';
+  
+    sliderContainer.appendChild(ageLabel);
+    sliderContainer.appendChild(ageSlider);
+    sliderContainer.appendChild(ageValue);
+    this.adjustDiseasesByAge(ageSlider.value);
+
+    // Event listener for the slider
+    ageSlider.addEventListener('input', () => {
+      ageValue.textContent = ageSlider.value;
+      // Adjust the appearance of diseases based on age
+      this.adjustDiseasesByAge(ageSlider.value);
+    });
+  
+    this.adjustDiseasesByAge(ageSlider.value);
+    return sliderContainer;
+  }
+
+  createIncidenceSlider() {
+    const sliderContainer = document.createElement('div');
+    sliderContainer.className = 'slider-container';
+  
+    const incidenceLabel = document.createElement('span');
+    incidenceLabel.className = 'incidence-label';
+    incidenceLabel.textContent = 'Incidence:';
+  
+    const incidenceSlider = document.createElement('input');
+    incidenceSlider.type = 'range';
+    incidenceSlider.id = 'incidenceSlider';
+    incidenceSlider.min = '0';
+    incidenceSlider.max = '100'; // Slider range from 0 to 100 for linear movement
+    incidenceSlider.value = '50'; // Initial slider position
+    incidenceSlider.step = '1';
+  
+    const incidenceValue = document.createElement('span');
+    incidenceValue.id = 'incidenceValue';
+  
+    // Logarithmic scale parameters
+    const logMin = Math.log(0.1); // Logarithm of the minimum incidence value
+    const logMax = Math.log(10800); // Logarithm of the maximum incidence value
+    const scale = (logMax - logMin) / 100; // Scale to fit the slider range (0-100)
+  
+    // Set the initial logarithmic value displayed next to the slider
+    const initialLogValue = Math.exp(logMin + scale * incidenceSlider.value);
+    incidenceValue.textContent = initialLogValue.toFixed(0);
+  
+    sliderContainer.appendChild(incidenceLabel);
+    sliderContainer.appendChild(incidenceSlider);
+    sliderContainer.appendChild(incidenceValue);
+  
+    // Event listener for the slider
+    incidenceSlider.addEventListener('input', () => {
+      const logValue = Math.exp(logMin + scale * incidenceSlider.value);
+      incidenceValue.textContent = logValue.toFixed(1); // Display the logarithmic value
+      // Adjust the appearance of diseases based on logarithmic incidence
+      this.adjustDiseasesByIncidence(logValue);
+    });
+  
+    return sliderContainer;
+  }
+  
+  adjustDiseasesByAge(age) {
+    document.querySelectorAll('.disease').forEach((disease) => {
+      const onsetAge = parseInt(disease.getAttribute('data-onset-age'));
+      const intensity = Math.min(1, age / onsetAge);
+      disease.style.opacity = String(intensity);
+      disease.style.filter = `brightness(${intensity})`;
+      disease.style.transition = 'opacity 1s ease, filter 1s ease';
+    });
+  }
+
+  adjustDiseasesByIncidence(incidence) {
+    document.querySelectorAll('.disease').forEach((disease) => {
+      const diseaseIncidence = parseInt(disease.getAttribute('data-incidence'));
+      const intensity = Math.min(1, diseaseIncidence / incidence); 
+      disease.style.opacity = String(intensity);
+      disease.style.filter = `brightness(${intensity})`;
+      disease.style.transition = 'opacity 1s ease, filter 1s ease';
+    });
+  }
 }
 
 // Bootstrap the app
