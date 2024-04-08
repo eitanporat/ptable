@@ -466,7 +466,7 @@ class PeriodicTableApp {
       const intensity = Math.min(1, Math.pow(age / onsetAge, 3));
       disease.style.opacity = String(intensity);
       disease.style.filter = `brightness(${intensity})`;
-      disease.style.transition = 'opacity 1s ease, filter 1s ease';
+      disease.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
     });
   }
 
@@ -476,7 +476,7 @@ class PeriodicTableApp {
       const intensity = Math.min(1, Math.pow(diseaseIncidence / incidence, 3)); 
       disease.style.opacity = String(intensity);
       disease.style.filter = `brightness(${intensity})`;
-      disease.style.transition = 'opacity 1s ease, filter 1s ease';
+      disease.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
     });
   }
 }
