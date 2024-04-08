@@ -213,28 +213,40 @@ class PeriodicTableApp {
   createDiseaseClassElement(diseaseClass) {
     const container = document.createElement("div");
     container.className = "disease-class";
-
+  
     // Create the color box
     const colorBox = document.createElement("div");
     colorBox.className = "disease-class-color-box";
     colorBox.style.backgroundColor = diseaseClass.color; // Set the background color to match the disease class
-
+  
     // Create the label
     const label = document.createElement("span");
     label.className = "disease-class-label";
     label.textContent = diseaseClass.disease;
-
+  
     // Append the color box and label to the container
     container.appendChild(colorBox);
     container.appendChild(label);
-
+  
     container.addEventListener("mouseenter", () =>
       this.highlightDiseases(diseaseClass.disease)
     );
     container.addEventListener("mouseleave", () => this.resetHighlight());
   
+    // Add touch event listeners for mobile devices
+    container.addEventListener("touchstart", (event) => {
+      this.highlightDiseases(diseaseClass.disease);
+      event.preventDefault(); // Prevent default touch behavior
+    }, {passive: false});
+  
+    container.addEventListener("touchend", (event) => {
+      this.resetHighlight();
+      event.preventDefault(); // Prevent default touch behavior
+    }, {passive: false});
+  
     return container;
   }
+  
 
   selectDisease(index, finalize=true) {
     this.selectedDiseaseIndex = index;
