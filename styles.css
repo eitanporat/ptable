@@ -169,7 +169,6 @@ color: #333;
 
   
 .disease {
-    padding: 5px;
     background-color: #e6f4f1;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -528,14 +527,13 @@ padding: 0 10px; /* Add some space around the text */
   
     .diseases-container {
         max-width: 95vw;
-        max-height: calc(100vh - 390px); /* Set a maximum height of 50% of the viewport height or 300px, whichever is larger */
     }
 
     .disease {
+        padding: 5px;
         width: 70px; /* Adjust width as needed */
         height: 70px; /* Adjust height as needed */
         font-size: 10px;
-        padding: 2px;
     }
 
     .disease .gender-ratio-text {
@@ -637,9 +635,9 @@ padding: 0 10px; /* Add some space around the text */
     }
 
     .disease-column-label {
-        font-size: 12px;
+        font-size: 11px;
     }
-    
+
 }
 
 @media (max-width: 400px) {
