@@ -223,7 +223,7 @@ class PeriodicTableApp {
 
     const switchLabel = document.createElement("span");
     switchLabel.className = "switch-label";
-    switchLabel.textContent = "♀:♂";
+    switchLabel.textContent = "♂:♀";
 
     label.appendChild(input);
     label.appendChild(span);
@@ -279,20 +279,21 @@ class PeriodicTableApp {
     element.setAttribute('data-incidence', disease.incidence);
     element.setAttribute('data-disease-name', disease.diseaseName);
 
-    if (disease.genderRatio)
+    // if disease has attribute genderRatio (could be equal to 0...)
+    if (disease.genderRatio !== undefined)
     {
       const genderRatioText = document.createElement("div");
       genderRatioText.className = "gender-ratio-text";
       genderRatioText.innerHTML = `<div class="ratio-container">
       <div class="ratio-part">
-        <div class="ratio-text-left">♀</div>
-        <div class="ratio-colon">:</div>
         <div class="ratio-text-right">♂</div>
+        <div class="ratio-colon">:</div>
+        <div class="ratio-text-left">♀</div>
       </div>
       <div class="ratio-part">
-        <div class="ratio-text-left">${disease.genderRatio.toPrecision(1)}</div>
+        <div class="ratio-text-left">1</div>
         <div class="ratio-colon">:</div>
-        <div class="ratio-text-right">1</div>
+        <div class="ratio-text-right">${disease.genderRatio.toFixed(1)}</div>
       </div>
     </div>    
     `;
