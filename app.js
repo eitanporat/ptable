@@ -647,12 +647,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.app = new PeriodicTableApp("app");
 });
 
-
-// Disable zooming
-document.addEventListener("gesturestart", function (e) {
-  e.preventDefault();
-});
-
 // Disable scrolling
 document.addEventListener("touchmove", function (e) {
   e.preventDefault();
