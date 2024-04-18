@@ -541,7 +541,7 @@ padding: 0 10px; /* Add some space around the text */
         font-size: 12px;
     }
     .disease-class-label {
-        font-size: x-small;
+        font-size: small;
     }
     .layout-container {
       flex-direction: column;
