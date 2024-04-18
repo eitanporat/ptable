@@ -307,7 +307,7 @@ class PeriodicTableApp {
       }
     });
   
-    element.addEventListener("click", () => {
+    element.addEventListener("touchstart", () => {
       // Check if the clicked element is already selected
       if (element.classList.contains("selected")) {
         // If it is selected, remove the class and unselect it
