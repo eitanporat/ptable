@@ -279,8 +279,6 @@ class PeriodicTableApp {
     element.setAttribute('data-incidence', disease.incidence);
     element.setAttribute('data-disease-name', disease.diseaseName);
 
-    element.addEventListener("click", () => this.selectDisease(index));
-
     if (disease.genderRatio)
     {
       const genderRatioText = document.createElement("div");
