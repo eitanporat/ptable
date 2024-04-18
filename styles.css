@@ -591,12 +591,6 @@ padding: 0 10px; /* Add some space around the text */
         margin: 5px;
     }
 
-        /* Style for the color box that precedes the label */
-    .disease-class-color-box {
-        width: 10px; /* Width of the color box */
-        height: 10px; /* Height of the color box */
-    }
-
     .age-label, .incidence-label {
         font-size: 12px;
         margin-right: 5px;
