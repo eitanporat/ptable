@@ -328,6 +328,9 @@ input:checked + .slider:before {
     height: 200px; /* Set the height to match the disease elements */
     margin: 0 auto; /* Center the selected disease panel horizontally */
     color: #333; /* Set the text color to match the disease elements */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack the elements vertically */
+    align-items: center;
 }
 
 .selected-disease .disease-name {
@@ -560,7 +563,7 @@ padding: 0 10px; /* Add some space around the text */
       margin: 0px;
       flex-basis: fit-content;
       flex-direction: row;
-      align-items: flex-start; /* Center the selected disease panel vertically */;
+      align-items: center; /* Center the selected disease panel vertically */;
       justify-content: center; /* Center the selected disease panel horizontally */
     }
 
@@ -568,12 +571,8 @@ padding: 0 10px; /* Add some space around the text */
       font-size: 10px;
       width: 100px; /* Adjust width as needed */
       height: 100px; /* Adjust height as needed */
+      align-items: center;
     }
-
-    .selected-disease-panel {
-        margin: 0 auto;
-    }
-
 
     .disease-attributes-table {
         font-size: smaller;
@@ -642,4 +641,9 @@ padding: 0 10px; /* Add some space around the text */
     }
     
 }
-  
+
+@media (max-width: 400px) {
+    .selected-disease {
+        margin: 5px;
+    }
+}
