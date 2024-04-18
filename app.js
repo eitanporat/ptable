@@ -121,7 +121,7 @@ class PeriodicTableApp {
       if (window.innerWidth <= 900) {
         labelElement.style.width = `${50 * (label.endColumn - label.startColumn)}px`;
       } else {
-        labelElement.style.width = `${100 * (label.endColumn - label.startColumn)}px`;
+        labelElement.style.width = `${80 * (label.endColumn - label.startColumn)}px`;
       }
       diseasesContainer.appendChild(labelElement);
     });

@@ -23,6 +23,7 @@ body {
 .layout-container {
     margin-top: 5px;
     display: flex;
+    align-items: center;
 }
 
 .settings-container {
@@ -463,7 +464,7 @@ padding: 0 10px; /* Add some space around the text */
     position: absolute;
     top: 20px; /* Align with the top of the table */
     bottom: 20px; /* Align with the bottom of the table */
-    left: -40px; /* Position to the left of the content container */
+    left: -30px; /* Position to the left of the content container */
 }
 
 .horizontal-axis-label {
@@ -482,7 +483,7 @@ padding: 0 10px; /* Add some space around the text */
     display: flex;
     justify-content: space-around; /* Evenly distribute labels */
     position: absolute;
-    top: -25px; /* Position it above the table */
+    top: -20px; /* Position it above the table */
     left: 0;
     right: 0;
     height: 20px; /* Set a fixed height for the axis */
@@ -526,7 +527,7 @@ padding: 0 10px; /* Add some space around the text */
     }
   
     .diseases-container {
-        max-width: 95vw;
+        max-width: 86vw;
     }
 
     .disease {
@@ -619,7 +620,7 @@ padding: 0 10px; /* Add some space around the text */
     }
 
     .vertical-axis {
-        left: -30px;
+        left: -27px;
     }
 
     .vertical-axis-label {
