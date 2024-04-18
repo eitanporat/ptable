@@ -277,6 +277,7 @@ class PeriodicTableApp {
 
     element.setAttribute('data-onset-age', disease.age);
     element.setAttribute('data-incidence', disease.incidence);
+    element.setAttribute('data-disease-name', disease.diseaseName);
 
     element.addEventListener("click", () => this.selectDisease(index));
 
@@ -504,17 +505,19 @@ class PeriodicTableApp {
   }
 
   highlightDiseases(diseaseClass) {
-    this.diseases.forEach((disease, index) => {
-      const diseaseElement = this.container.querySelector(
-        `.disease:nth-child(${index + 1})`
-      );
-      if (disease.diseaseClass === diseaseClass) {
-        diseaseElement.classList.add("focused");
-      } else {
-        diseaseElement.classList.add("dimmed");
+    console.log('hello?')
+    this.diseases.forEach((disease) => {
+      const diseaseElement = this.container.querySelector(`.disease[data-disease-name="${disease.diseaseName}"]`);
+      if (diseaseElement) {
+        if (disease.diseaseClass === diseaseClass) {
+          diseaseElement.classList.add("focused");
+        } else {
+          diseaseElement.classList.add("dimmed");
+        }
       }
     });
   }
+  
   
   resetHighlight() {
     const diseaseElements = this.container.querySelectorAll(".disease");
@@ -638,9 +641,10 @@ class PeriodicTableApp {
   }
 }
 
+
 // Bootstrap the app
 document.addEventListener("DOMContentLoaded", () => {
-  new PeriodicTableApp("app");
+  window.app = new PeriodicTableApp("app");
 });
 
 
