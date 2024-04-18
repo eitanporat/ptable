@@ -50,7 +50,7 @@ class PeriodicTableApp {
     
     // Append the settings container to the outer layout container
     contentContainer.appendChild(settingsContainer);
-  
+    
     // Append disease class elements
     const diseaseClassContainer = document.createElement("div");
     diseaseClassContainer.className = "disease-class-container";
@@ -61,13 +61,25 @@ class PeriodicTableApp {
     });
     contentContainer.appendChild(diseaseClassContainer);
   
+    const tableWrapper = document.createElement('div');
+    tableWrapper.className = 'table-wrapper';
+    tableWrapper.style.position = 'relative'; // Needed for absolute positioning of children
+
+    const verticalAxis = this.createVerticalAxis();
+    const verticalAxisLabel = this.createVerticalAxisLabel();
+    verticalAxis.appendChild(verticalAxisLabel);
+
+    tableWrapper.appendChild(verticalAxis);
+
     // Append disease elements
     const diseasesContainer = document.createElement("div");
     diseasesContainer.className = "diseases-container";
     this.diseases.forEach((disease, index) => {
       diseasesContainer.appendChild(this.createDiseaseElement(disease, index));
     });
-    contentContainer.appendChild(diseasesContainer);
+
+    tableWrapper.appendChild(diseasesContainer);
+    contentContainer.appendChild(tableWrapper);
   
     // Append the content container to the layout container
     layoutContainer.appendChild(contentContainer);
@@ -82,6 +94,61 @@ class PeriodicTableApp {
     // Append the outer layout container to the main container
     this.container.appendChild(outerLayoutContainer);
   }  
+
+  createVerticalAxis() {
+    const verticalAxis = document.createElement('div');
+    verticalAxis.className = 'vertical-axis';
+  
+    // Create labels for the cell count (10^7 to 10^11)
+    for (let i = 11; i >= 7; i--) {
+      const label = document.createElement('div');
+      label.className = 'axis-label';
+      
+      // Use the HTML <sup> tag for supscript
+      label.innerHTML = `10<sup>${i}</sup>`;
+      
+      verticalAxis.appendChild(label);
+    }
+  
+    return verticalAxis;
+  }
+  
+  createVerticalAxisLabel() {
+    const labelContainer = document.createElement('div');
+    labelContainer.className = 'vertical-axis-label';
+  
+    const lineLeft = document.createElement('div');
+    lineLeft.className = 'vertical-axis-label-line';
+  
+    const labelText = document.createElement('div');
+    labelText.className = 'vertical-axis-label-text';
+    labelText.textContent = 'Number of Cells';
+  
+    const lineRight = document.createElement('div');
+    lineRight.className = 'vertical-axis-label-line';
+  
+    // Append the lines and text to the label container
+    labelContainer.appendChild(lineLeft);
+    labelContainer.appendChild(labelText);
+    labelContainer.appendChild(lineRight);
+  
+    return labelContainer;
+  }
+
+  createHorizontalAxis() {
+    const horizontalAxis = document.createElement('div');
+    horizontalAxis.className = 'horizontal-axis';
+  
+    // Create labels for the turnover (Days, Months, Years, ∞)
+    ['Days', 'Months', 'Years', '∞'].forEach(labelText => {
+      const label = document.createElement('div');
+      label.className = 'axis-label';
+      label.textContent = labelText;
+      horizontalAxis.appendChild(label);
+    });
+  
+    return horizontalAxis;
+  }
 
   async fetchDiseases() {
     const response = await fetch("diseases.json");

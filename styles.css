@@ -42,12 +42,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    max-width: 500px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .disease-class {
-    flex: 1 0 auto; /* Flex-grow: 1, Flex-shrink: 0, Flex-basis: auto */
     max-width: 200px;
 }
 
@@ -430,6 +429,48 @@ color: #333;
 .disease-attributes-table td:first-child {
     border-right: 1px solid #ddd;
 }
+
+.vertical-axis-label {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: -230px; /* Adjust as needed to position the label to the left of the vertical axis */
+    top: 50%;
+    transform: rotate(-90deg); /* Rotate label and shift to center */
+    transform-origin: center; /* Set the origin of transform */
+    pointer-events: none;
+}
+  
+.vertical-axis-label-line {
+    flex-grow: 1;
+    width: 150px; /* Length of the lines */
+    border-top: 1px solid black; /* Use border-top for visibility */
+}
+
+.vertical-axis-label-text {
+white-space: nowrap; /* Keep the text on one line */
+padding: 0 10px; /* Add some space around the text */
+}
+
+.vertical-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: flex-end; /* Align labels to the end/right */
+    position: absolute;
+    top: 20px; /* Align with the top of the table */
+    bottom: 20px; /* Align with the bottom of the table */
+    left: -40px; /* Position to the left of the content container */
+}
+
+.horizontal-axis {
+display: flex;
+justify-content: space-around; /* Evenly distribute labels */
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+}
   
 /* Responsive adjustments */
 /* Adjustments for smaller screens */
@@ -472,10 +513,10 @@ color: #333;
     }
   
     .content-container {
+      position: relative;
       display: flex;
       flex-direction: column;
-      margin-left: 0px;
-      max-width: 90vw;
+      margin-left: 40px;
     }
   
     .selected-disease-container {
@@ -545,6 +586,14 @@ color: #333;
 
     .disease-attributes-table td {
         padding: 4px 6px;
+    }
+
+    .vertical-axis {
+        left: -30px;
+    }
+
+    .vertical-axis-label {
+        left: -215px;
     }
 }
   
