@@ -197,17 +197,17 @@
     {
         "organ": "Adrenal",
         "cellType": "Zona Fasciculata",
-        "diseaseName": "Adrenal Cushing's Syndrome",
+        "diseaseName": "Addison's Disease",
         "row": 3,
         "column": 3,
         "diseaseClass": "CD8+ Autoimmune",
         "countMale": 4.88E+09,
         "countFemale": 4.14E+09,
         "cellLifeSpan": 100,
-        "incidence": 0.6,
-        "age": 38,
-        "genderRatio": 8.25,
-        "link": "https://en.wikipedia.org/wiki/Cushing%27s_syndrome"
+        "incidence": 6,
+        "age": 39,
+        "genderRatio": 1.8,
+        "link": "https://en.wikipedia.org/wiki/Addison%27s_disease"
     },
     {
         "organ": "Skin",
