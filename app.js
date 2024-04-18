@@ -290,7 +290,7 @@ class PeriodicTableApp {
         <div class="ratio-text-right">♂</div>
       </div>
       <div class="ratio-part">
-        <div class="ratio-text-left">${disease.genderRatio}</div>
+        <div class="ratio-text-left">${disease.genderRatio.toPrecision(1)}</div>
         <div class="ratio-colon">:</div>
         <div class="ratio-text-right">1</div>
       </div>
