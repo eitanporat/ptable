@@ -69,14 +69,15 @@ class PeriodicTableApp {
     const verticalAxisLabel = this.createVerticalAxisLabel();
     verticalAxis.appendChild(verticalAxisLabel);
 
+    const horizontalAxis = this.createHorizontalAxis();
+    const horizontalAxisLabel = this.createHorizontalAxisLabel();
+    horizontalAxis.appendChild(horizontalAxisLabel);
+
     tableWrapper.appendChild(verticalAxis);
+    tableWrapper.appendChild(horizontalAxis);
 
     // Append disease elements
-    const diseasesContainer = document.createElement("div");
-    diseasesContainer.className = "diseases-container";
-    this.diseases.forEach((disease, index) => {
-      diseasesContainer.appendChild(this.createDiseaseElement(disease, index));
-    });
+    const diseasesContainer = this.createDiseasesContainer();
 
     tableWrapper.appendChild(diseasesContainer);
     contentContainer.appendChild(tableWrapper);
@@ -94,6 +95,44 @@ class PeriodicTableApp {
     // Append the outer layout container to the main container
     this.container.appendChild(outerLayoutContainer);
   }  
+
+  createDiseasesContainer() {
+    const diseasesContainer = document.createElement("div");
+
+    const labelsRow = document.createElement("div");
+    labelsRow.className = "diseases-labels-row";
+
+    // Define labels and their positions
+    const labels = [
+      { text: 'BARRIER', startColumn: 1, endColumn: 2 },
+      { text: 'SECRETORY', startColumn: 2, endColumn: 6 },
+      { text: 'FRONTLINE', startColumn: 6, endColumn: 7 },
+      { text: 'PERMANENT', startColumn: 7, endColumn: 8 },
+    ];
+  
+    // Create label elements and position them
+    labels.forEach(label => {
+      const labelElement = document.createElement('div');
+      labelElement.className = 'disease-column-label';
+      labelElement.textContent = label.text;
+      labelElement.style.gridColumnStart = label.startColumn;
+      labelElement.style.gridColumnEnd = label.endColumn;
+      labelElement.style.gridRow = 1; // All labels will be in the first row
+      if (window.innerWidth <= 900) {
+        labelElement.style.width = `${50 * (label.endColumn - label.startColumn)}px`;
+      } else {
+        labelElement.style.width = `${100 * (label.endColumn - label.startColumn)}px`;
+      }
+      diseasesContainer.appendChild(labelElement);
+    });
+
+    diseasesContainer.className = "diseases-container";
+    this.diseases.forEach((disease, index) => {
+      diseasesContainer.appendChild(this.createDiseaseElement(disease, index));
+    });
+
+    return diseasesContainer;
+  }
 
   createVerticalAxis() {
     const verticalAxis = document.createElement('div');
@@ -135,19 +174,33 @@ class PeriodicTableApp {
     return labelContainer;
   }
 
+
   createHorizontalAxis() {
     const horizontalAxis = document.createElement('div');
     horizontalAxis.className = 'horizontal-axis';
   
-    // Create labels for the turnover (Days, Months, Years, ∞)
-    ['Days', 'Months', 'Years', '∞'].forEach(labelText => {
-      const label = document.createElement('div');
-      label.className = 'axis-label';
-      label.textContent = labelText;
-      horizontalAxis.appendChild(label);
-    });
-  
     return horizontalAxis;
+  }
+
+  createHorizontalAxisLabel() {
+    const labelContainer = document.createElement('div');
+    labelContainer.className = 'horizontal-axis-label';
+  
+    const lineLeft = document.createElement('div');
+    lineLeft.className = 'horizontal-axis-label-line';
+  
+    const labelText = document.createElement('div');
+    labelText.className = 'horizontal-axis-label-text';
+    labelText.textContent = 'Turnover Rate';
+  
+    const lineRight = document.createElement('div');
+    lineRight.className = 'horizontal-axis-label-line';
+  
+    labelContainer.appendChild(lineLeft);
+    labelContainer.appendChild(labelText);
+    labelContainer.appendChild(lineRight);
+  
+    return labelContainer;
   }
 
   async fetchDiseases() {
@@ -201,7 +254,7 @@ class PeriodicTableApp {
     ).color;
 
     // Calculate grid position based on row and column properties
-    element.style.gridRow = disease.row;
+    element.style.gridRow = disease.row + 1;
     element.style.gridColumn = disease.column;
 
     // Create and append organ name element
