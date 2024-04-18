@@ -75,24 +75,9 @@
         "link": "https://en.wikipedia.org/wiki/Eosinophilic_esophagitis"
     },
     {
-        "organ": "Nose",
-        "cellType": "Respiratory Epithelium",
-        "diseaseName": "Allergic Rhinitis",
-        "row": 6,
-        "column": 1,
-        "diseaseClass": "Immune Hypersensitivity",
-        "countFemale": 6.57E+07,
-        "countMale": 6.57E+07,
-        "cellLifeSpan": 6.9,
-        "incidence": 7410,
-        "age": 19,
-        "genderRatio": 1,
-        "link": "https://en.wikipedia.org/wiki/Allergic_rhinitis"
-    },
-    {
         "organ": "Eye Cornea and Conjunctiva",
         "cellType": "Epithelium",
-        "row": 7,
+        "row": 6,
         "column": 1,
         "diseaseName": "Allergic Conjunctivitis",
         "diseaseClass": "Immune Hypersensitivity",
@@ -103,6 +88,21 @@
         "age": 18,
         "genderRatio": 1.13,
         "link": "https://en.wikipedia.org/wiki/Allergic_conjunctivitis"
+    },
+    {
+        "organ": "Nose",
+        "cellType": "Respiratory Epithelium",
+        "diseaseName": "Allergic Rhinitis",
+        "row": 7,
+        "column": 1,
+        "diseaseClass": "Immune Hypersensitivity",
+        "countFemale": 6.57E+07,
+        "countMale": 6.57E+07,
+        "cellLifeSpan": 6.9,
+        "incidence": 7410,
+        "age": 19,
+        "genderRatio": 1,
+        "link": "https://en.wikipedia.org/wiki/Allergic_rhinitis"
     },
     {
         "organ": "Stomach",
