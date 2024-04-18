@@ -23,6 +23,9 @@ class PeriodicTableApp {
     const outerLayoutContainer = document.createElement("div");
     outerLayoutContainer.className = "outer-layout-container";
   
+    const navbar = this.createNavbar();
+    outerLayoutContainer.appendChild(navbar);
+  
     // Create the main layout container to hold the disease content
     const layoutContainer = document.createElement("div");
     layoutContainer.className = "layout-container";
@@ -319,37 +322,40 @@ class PeriodicTableApp {
     const table = document.createElement("table");
     table.className = "disease-attributes-table";
   
-    // // Create table headers
-    // const headerRow = table.insertRow();
-    // const headerCellName = headerRow.insertCell();
-    // headerCellName.textContent = "Attribute";
-    // const headerCellValue = headerRow.insertCell();
-    // headerCellValue.textContent = "Value";
-  
     if (disease) {
       // Add table rows for each attribute
-      const attributes = ["countMale", "countFemale", "cellLifeSpan", "incidence", "age", "genderRatio"];
+      const attributes = ["countMale", "countFemale", "cellLifeSpan", "incidence", "age", "genderRatio", "link"];
       const attributeToText = {
         "countMale": "Cell Count (Male)",
         "countFemale": "Cell Count (Female)",
         "cellLifeSpan": "Cell Life Span (Days)",
         "incidence": "Incidence (Per Million)",
         "age": "Age of Onset",
-        "genderRatio": "Female/Male Ratio"
+        "genderRatio": "Female/Male Ratio",
+        "link": "Link"
       }
-
+  
       attributes.forEach(attr => {
         const row = table.insertRow();
         const cellName = row.insertCell();
         cellName.textContent = attributeToText[attr];
         const cellValue = row.insertCell();
   
-        // Format large numbers in scientific notation
         const value = disease[attr];
-        if (typeof value === 'number' && value >= 1e5) {
-          cellValue.textContent = value.toExponential(1);
+        // Check if the attribute is 'link' and if the value is a URL
+        if (attr === "link" && typeof value === 'string' && value.startsWith('http')) {
+          const link = document.createElement('a');
+          link.href = value;
+          link.textContent = "View Wikipedia Article";
+          link.target = "_blank"; // Opens the link in a new tab
+          cellValue.appendChild(link);
         } else {
-          cellValue.textContent = value;
+          // Format large numbers in scientific notation
+          if (typeof value === 'number' && value >= 1e5) {
+            cellValue.textContent = value.toExponential(1);
+          } else {
+            cellValue.textContent = value;
+          }
         }
       });
     }
@@ -357,6 +363,26 @@ class PeriodicTableApp {
     return table;
   }
   
+  createNavbar() {
+    const navbar = document.createElement("div");
+    navbar.className = "navbar";  // Assign a class for potential styling
+  
+    const logo = document.createElement("img");
+    logo.src = "https://ptable.com/icon/ptable-logo.svg";
+    logo.alt = "PTable Logo";
+    logo.className = "navbar-logo";  // Class for styling the logo
+  
+    const titleText = document.createElement("span");
+    titleText.textContent = " of Diseases";
+    titleText.className = "navbar-title";  // Class for styling the text
+  
+    // Append the logo and text to the navbar
+    navbar.appendChild(logo);
+    navbar.appendChild(titleText);
+  
+    return navbar;
+  }
+
   highlightDiseases(diseaseClass) {
     this.diseases.forEach((disease, index) => {
       const diseaseElement = this.container.querySelector(

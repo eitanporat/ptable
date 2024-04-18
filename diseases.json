@@ -11,7 +11,8 @@
         "cellLifeSpan": 5.3,
         "incidence": 125,
         "age": 30,
-        "genderRatio": 1.1
+        "genderRatio": 1.1,
+        "link": "https://en.wikipedia.org/wiki/Crohn%27s_disease"
     },
     {
         "organ": "Skin",
@@ -25,7 +26,8 @@
         "cellLifeSpan": 48,
         "incidence": 3280,
         "age": 4,
-        "genderRatio": 1.47
+        "genderRatio": 1.47,
+        "link": "https://en.wikipedia.org/wiki/Dermatitis"
     },
     {
         "organ": "Large Intestine",
@@ -39,7 +41,8 @@
         "cellLifeSpan": 3.4,
         "incidence": 500,
         "age": 40,
-        "genderRatio": 0.88
+        "genderRatio": 0.88,
+        "link": "https://en.wikipedia.org/wiki/Inflammatory_bowel_disease"
     },
     {
         "organ": "Bronchi and Bronchiole",
@@ -53,7 +56,8 @@
         "cellLifeSpan": 40,
         "incidence": 5040,
         "age": 25,
-        "genderRatio": 1
+        "genderRatio": 1,
+        "link": "https://en.wikipedia.org/wiki/Asthma"
     },
     {
         "organ": "Esophagus",
@@ -67,7 +71,8 @@
         "countFemale": 1.01E+09,
         "cellLifeSpan": 8,
         "age": 5,
-        "genderRatio": 0.45
+        "genderRatio": 0.45,
+        "link": "https://en.wikipedia.org/wiki/Eosinophilic_esophagitis"
     },
     {
         "organ": "Nose",
@@ -81,7 +86,8 @@
         "cellLifeSpan": 6.9,
         "incidence": 7410,
         "age": 19,
-        "genderRatio": 1
+        "genderRatio": 1,
+        "link": "https://en.wikipedia.org/wiki/Allergic_rhinitis"
     },
     {
         "organ": "Eye Cornea and Conjunctiva",
@@ -95,7 +101,8 @@
         "cellLifeSpan": 7,
         "incidence": 2250,
         "age": 18,
-        "genderRatio": 1.13
+        "genderRatio": 1.13,
+        "link": "https://en.wikipedia.org/wiki/Allergic_conjunctivitis"
     },
     {
         "organ": "Stomach",
@@ -109,7 +116,8 @@
         "cellLifeSpan": 13,
         "incidence": 114,
         "age": 70,
-        "genderRatio": 0.44
+        "genderRatio": 0.44,
+        "link": "https://en.wikipedia.org/wiki/Gastric_adenocarcinoma"
     },
     {
         "organ": "Bile Duct",
@@ -123,7 +131,8 @@
         "cellLifeSpan": 31,
         "incidence": 17.6,
         "age": 53,
-        "genderRatio": 15.5
+        "genderRatio": 15.5,
+        "link": "https://en.wikipedia.org/wiki/Primary_biliary_cholangitis"
     },
     {
         "organ": "Stomach",
@@ -137,7 +146,8 @@
         "cellLifeSpan": 54,
         "incidence": 188,
         "age": 64,
-        "genderRatio": 3
+        "genderRatio": 3,
+        "link": "https://en.wikipedia.org/wiki/Atrophic_gastritis"
     },
     {
         "organ": "Anterior Pituitary",
@@ -151,7 +161,8 @@
         "cellLifeSpan": 65,
         "incidence": 3.8,
         "age": 45,
-        "genderRatio": 1.40
+        "genderRatio": 1.40,
+        "link": "https://en.wikipedia.org/wiki/Pituitary_adenoma"
     },
     {
         "organ": "Anterior Pituitary",
@@ -165,7 +176,8 @@
         "cellLifeSpan": 65,
         "incidence": 2.4,
         "age": 38,
-        "genderRatio": 2.80
+        "genderRatio": 2.80,
+        "link": "https://en.wikipedia.org/wiki/Cushing%27s_disease"
     },
     {
         "organ": "Pancreas",
@@ -179,7 +191,8 @@
         "cellLifeSpan": 250,
         "incidence": 40,
         "age": 70,
-        "genderRatio": 0.63
+        "genderRatio": 0.63,
+        "link": "https://en.wikipedia.org/wiki/Pancreatic_cancer"
     },
     {
         "organ": "Adrenal",
@@ -193,7 +206,8 @@
         "cellLifeSpan": 100,
         "incidence": 0.6,
         "age": 38,
-        "genderRatio": 8.25
+        "genderRatio": 8.25,
+        "link": "https://en.wikipedia.org/wiki/Cushing%27s_syndrome"
     },
     {
         "organ": "Skin",
@@ -207,7 +221,8 @@
         "cellLifeSpan": 147,
         "incidence": 2500,
         "age": 21,
-        "genderRatio": 0.8
+        "genderRatio": 0.8,
+        "link": "https://en.wikipedia.org/wiki/Vitiligo"
     },
     {
         "organ": "Anterior Pituitary",
@@ -221,7 +236,8 @@
         "cellLifeSpan": 65,
         "incidence": 25.6,
         "age": 42,
-        "genderRatio": 12.50
+        "genderRatio": 12.50,
+        "link": "https://en.wikipedia.org/wiki/Prolactinoma"
     },
     {
         "organ": "Anterior Pituitary",
@@ -235,7 +251,8 @@
         "cellLifeSpan": 65,
         "incidence": 0.29,
         "age": 49,
-        "genderRatio": 0.98
+        "genderRatio": 0.98,
+        "link": "https://en.wikipedia.org/wiki/Pituitary_adenoma"
     },
     {
         "organ": "Cutaneous Vessels",
@@ -249,7 +266,8 @@
         "cellLifeSpan": 560,
         "incidence": 9375,
         "age": 35,
-        "genderRatio": 1.00
+        "genderRatio": 1.00,
+        "link": "https://en.wikipedia.org/wiki/Cherry_hemangioma"
     },
     {
         "organ": "Thyroid",
@@ -263,7 +281,8 @@
         "cellLifeSpan": 3000,
         "incidence": 2150,
         "age": 40,
-        "genderRatio": 4.4
+        "genderRatio": 4.4,
+        "link": "https://en.wikipedia.org/wiki/Hashimoto%27s_thyroiditis"
     },
     {
         "organ": "Pancreas",
@@ -277,7 +296,8 @@
         "cellLifeSpan": 859,
         "incidence": 76,
         "age": 22,
-        "genderRatio": 0.91  
+        "genderRatio": 0.91,
+        "link": "https://en.wikipedia.org/wiki/Type_1_diabetes" 
     },
     {
         "organ": "Adrenal",
@@ -291,7 +311,8 @@
         "cellLifeSpan": 100,
         "incidence": 60,
         "age": 55,
-        "genderRatio": 0.77
+        "genderRatio": 0.77,
+        "link": "https://en.wikipedia.org/wiki/Primary_hyperaldosteronism"
     },
     {
         "organ": "Fat",
@@ -305,7 +326,8 @@
         "cellLifeSpan": 4500,
         "incidence": 2100,
         "age": 51,
-        "genderRatio": 1.00
+        "genderRatio": 1.00,
+        "link": "https://en.wikipedia.org/wiki/Lipoma"
     },
     {
         "organ": "Brain",
@@ -319,7 +341,8 @@
         "cellLifeSpan": 26000,
         "incidence": 21,
         "age": 32,
-        "genderRatio": 2.9
+        "genderRatio": 2.9,
+        "link": "https://en.wikipedia.org/wiki/Multiple_sclerosis"
     },
     {
         "organ": "",
@@ -339,7 +362,8 @@
         "countMale": 3.89E+08,
         "cellLifeSpan": 1500,
         "incidence": 107.3,
-        "age": 39
+        "age": 39,
+        "link": "https://en.wikipedia.org/wiki/Leydig_cell_tumor"
     },
     {
         "organ": "Parathyroid",
@@ -353,7 +377,8 @@
         "cellLifeSpan": 7000,
         "incidence": 390,
         "age": 51,
-        "genderRatio": 2.80
+        "genderRatio": 2.80,
+        "link": "https://en.wikipedia.org/wiki/Primary_hyperparathyroidism"
     },
     {
         "organ": "Liver",
@@ -367,7 +392,8 @@
         "cellLifeSpan": 913,
         "incidence": 48.1,
         "age": 60,
-        "genderRatio": 0.74
+        "genderRatio": 0.74,
+        "link": "https://en.wikipedia.org/wiki/Cirrhosis"
     },
     {
         "organ": "Pancreas",
@@ -381,7 +407,8 @@
         "cellLifeSpan": 400,
         "incidence": 100,
         "age": 52,
-        "genderRatio": 1.2
+        "genderRatio": 1.2,
+        "link": "https://en.wikipedia.org/wiki/Chronic_pancreatitis"
     },
     {
         "organ": "Kidney",
@@ -395,7 +422,8 @@
         "cellLifeSpan": 690,
         "incidence": 2340,
         "age": 77,
-        "genderRatio": 1.09
+        "genderRatio": 1.09,
+        "link": "https://en.wikipedia.org/wiki/Chronic_kidney_disease"
     },
     {
         "organ": "Large Vessels",
@@ -409,7 +437,8 @@
         "cellLifeSpan": 715,
         "incidence": 5430,
         "age": 70,
-        "genderRatio": 0.77
+        "genderRatio": 0.77,
+        "link": "https://en.wikipedia.org/wiki/Atherosclerosis"
     },
     {
         "organ": "Kidney",
@@ -423,7 +452,8 @@
         "cellLifeSpan": 1820,
         "incidence": 7,
         "age": 48,
-        "genderRatio": 0.73
+        "genderRatio": 0.73,
+        "link": "https://en.wikipedia.org/wiki/Focal_segmental_glomerulosclerosis"
     },
     {
         "organ": "Cartilage",
@@ -437,7 +467,8 @@
         "cellLifeSpan": 600,
         "incidence": 6800,
         "age": 67,
-        "genderRatio": 1.47
+        "genderRatio": 1.47,
+        "link": "https://en.wikipedia.org/wiki/Osteoarthritis"
     },
     {
         "organ": "Brain",
@@ -451,7 +482,8 @@
         "cellLifeSpan": 300000,
         "incidence": 950,
         "age": 84,
-        "genderRatio": 1.2
+        "genderRatio": 1.2,
+        "link": "https://en.wikipedia.org/wiki/Alzheimer%27s_disease"
     },
     {
         "organ": "Bone",
@@ -465,7 +497,8 @@
         "cellLifeSpan": 9125,
         "incidence": 2000,
         "age": 70,
-        "genderRatio": 2
+        "genderRatio": 2,
+        "link": "https://en.wikipedia.org/wiki/Osteoporosis"
     },
     {
         "organ": "Heart",
@@ -479,7 +512,8 @@
         "cellLifeSpan": 60000,
         "incidence": 2700,
         "age": 75,
-        "genderRatio": 0.58
+        "genderRatio": 0.58,
+        "link": "https://en.wikipedia.org/wiki/Heart_failure"
     },
     {
         "organ": "Pancreas",
@@ -493,7 +527,8 @@
         "cellLifeSpan": 28000,
         "incidence": 2600,
         "age": 57,
-        "genderRatio": 0.88
+        "genderRatio": 0.88,
+        "link": "https://en.wikipedia.org/wiki/Type_2_diabetes"
     },
     {
         "organ": "Muscle",
@@ -507,7 +542,8 @@
         "cellLifeSpan": 20000,
         "incidence": 1250,
         "age": 74,
-        "genderRatio": 1
+        "genderRatio": 1,
+        "link": "https://en.wikipedia.org/wiki/Sarcopenia"
     },
     {
         "organ": "Eye",
@@ -521,7 +557,8 @@
         "cellLifeSpan": 29200,
         "incidence": 10800,
         "age": 61,
-        "genderRatio": 1.58
+        "genderRatio": 1.58,
+        "link": "https://en.wikipedia.org/wiki/Cataract"
     },
     {
         "organ": "Brain",
@@ -535,6 +572,7 @@
         "cellLifeSpan": 300000,
         "incidence": 134,
         "age": 64,
-        "genderRatio": 0.56
+        "genderRatio": 0.56,
+        "link": "https://en.wikipedia.org/wiki/Parkinson%27s_disease"
     }
 ]
