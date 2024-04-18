@@ -643,6 +643,7 @@ document.addEventListener("DOMContentLoaded", () => {
   new PeriodicTableApp("app");
 });
 
+
 // Disable zooming
 document.addEventListener("gesturestart", function (e) {
   e.preventDefault();
